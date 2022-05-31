@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/articulos', [ArticuloController::class, 'index']);
-Route::get('/articulos/{id}', [ArticuloController::class, 'show']);
+Route::get('/articulo', [ArticuloController::class, 'show']); //Pasamos el id por la url 
 Route::post('/articulos', [ArticuloController::class, 'store']);
 Route::put('/articulos/{id}', [ArticuloController::class, 'update']);
 Route::delete('/articulos/{id}', [ArticuloController::class, 'destroy']);

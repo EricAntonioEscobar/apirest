@@ -49,10 +49,13 @@ class ArticuloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $articulos = Articulo::find($id);
-        return $articulos;
+        $id = $_GET['id'];
+        $articulos = Articulo::where('id',$id)->get();
+        return response()->json([
+            'data'=> $articulos,
+        ], 200);
     }
 
     /**

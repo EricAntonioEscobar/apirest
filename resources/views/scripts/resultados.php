@@ -4,14 +4,19 @@ const eventosResultados = () => {
 
 const tbodyID = document.getElementById('tbodyID');
 
-axios.get('http://127.0.0.1:8000/api/articulos/')
+axios.get('http://127.0.0.1:8000/api/articulo?id=4')
     .then(resp => resp.data)
     .then(data => {
+        /* var arr = Object.entries(data); */
+
+        /* const algo = data.data;
+        console.log(Object.values(algo)); */
+        console.log(data);
 
         while(tbodyID.firstChild){
             tbodyID.removeChild(tbodyID.firstChild);
         }
-        data.map(resultados => {
+        data.data.map(resultados => {
             const fila = document.createElement('tr');
 
             const id = document.createElement('td');
