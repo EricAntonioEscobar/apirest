@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Articulo;
+use Psy\Command\WhereamiCommand;
 
 class ArticuloController extends Controller
 {
@@ -49,13 +50,34 @@ class ArticuloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
-    {
-        $id = $_GET['id'];
+    public function show(){
+        $id = $_GET['id'] ?? 'default';
+        $stock = $_GET['stock'] ?? 'default';
+
+    if($id == TRUE || $stock == 'default'){
         $articulos = Articulo::where('id',$id)->get();
         return response()->json([
             'data'=> $articulos,
         ], 200);
+      }
+      if($stock == TRUE || $id == 'default'){
+        $articulos = Articulo::where('stock', $stock)->get();
+        return response()->json([
+            'data'=> $articulos,
+        ], 200);
+      }
+      if($stock == TRUE || $id == TRUE){
+        $articulos = Articulo::where('id',$id)->where('stock',$stock)->get();
+        return response()->json([
+            'data'=> $articulos,
+        ], 200);
+      }
+      if($stock == FALSE || $id == FALSE){
+        $articulos = Articulo::all();
+        return response()->json([
+            'data'=> $articulos,
+        ], 200);
+      }
     }
 
     /**

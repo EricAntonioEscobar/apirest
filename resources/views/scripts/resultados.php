@@ -1,10 +1,10 @@
 <script>
 
-const eventosResultados = () => {
+const eventosResultados = (id,stock) => {
 
 const tbodyID = document.getElementById('tbodyID');
 
-axios.get('http://127.0.0.1:8000/api/articulo?id=4')
+axios.get(`http://127.0.0.1:8000/api/articulo?id=${id}&stock=${stock}`)
     .then(resp => resp.data)
     .then(data => {
         /* var arr = Object.entries(data); */

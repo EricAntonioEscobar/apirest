@@ -17,7 +17,7 @@
 </head>
 <body>
     <div>
-        <button type="button" onclick="eventosResultados()" class="btn btn-primary">Primary</button>
+        <button type="button" onclick="eventosResultados('','')" class="btn btn-primary">Primary</button>
     </div>
 
   <div id="container-table">
